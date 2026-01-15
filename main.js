@@ -23,7 +23,8 @@ async function translateWord(text, from, to, options) {
 		const html = await res.text();
 		const document = paser.parseFromString(html, "text/html");
 		const ec = document.getElementById("ec");
-		if (!ec) throw new Error("not found this word!");
+		// if (!ec) throw new Error("not found this word!");
+		if (!ec) return await translateSentence(...arguments);
 
 		// pronunciations
 		const phonetic = ec.getElementsByClassName("phonetic");
